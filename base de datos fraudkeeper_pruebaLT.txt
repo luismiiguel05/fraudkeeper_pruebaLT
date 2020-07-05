@@ -1,0 +1,22 @@
+CREATE SCHEMA `fraudkeeper_pruebaLT` ;
+
+USE `fraudkeeper_pruebaLT`;
+
+CREATE TABLE `direcciones` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ciudad` varchar(20) NOT NULL,
+  `calle` varchar(50) NOT NULL,
+  `numero` int NOT NULL,
+  `apartamento` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `datos_de_personas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) NOT NULL,
+  `apellido` varchar(20) NOT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `direcciones_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (direcciones_id) REFERENCES direcciones(id)
+);
